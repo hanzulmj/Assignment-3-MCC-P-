@@ -4,9 +4,11 @@ import React, { useState } from "react";
 import banner from "../assets/uov_banner.png";
 import { Text, TextInput, Button } from "react-native-paper";
 import Ionicons from "react-native-vector-icons/Ionicons";
+import Error from "../components/Error";
 
 const LoginScreen = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState(false);
   return (
     <View style={styles.container}>
       <Image source={banner} style={styles.image} resizeMode="contain" />
@@ -72,6 +74,7 @@ const LoginScreen = () => {
           Login
         </Button>
       </View>
+      {error ? <Error text="Please check your username and password" /> : <></>}
     </View>
   );
 };
