@@ -1,7 +1,7 @@
 import { View } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import React from "react";
-import { Ionicons } from "@expo/vector-icons";
+import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import ProfileScreen from "./ProfileScreen";
 import CourseScreen from "./CourseScreen";
 import SubjectsScreen from "./SubjectsScreen";
@@ -17,9 +17,16 @@ const HomeScreen = () => {
           if (route.name === "Profile") {
             iconName = "person";
           } else if (route.name === "Course") {
-            iconName = "bag";
+            iconName = "school";
           } else if (route.name === "Subjects") {
-            iconName = "book";
+            iconName = "book-open";
+            return (
+              <MaterialCommunityIcons
+                name={iconName}
+                size={size}
+                color={color}
+              />
+            );
           }
 
           return <Ionicons name={iconName} size={size} color={color} />;
