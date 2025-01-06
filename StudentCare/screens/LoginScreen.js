@@ -12,10 +12,10 @@ const LoginScreen = () => {
   return (
     <View style={styles.container}>
       <Image source={banner} style={styles.image} resizeMode="contain" />
-      <Text variant="headlineLarge" style={styles.title}>
-        Student Login
-      </Text>
       <View style={styles.inputContainer}>
+        <Text variant="headlineLarge" style={styles.title}>
+          Student Login
+        </Text>
         <TextInput
           label="Username"
           mode="outlined"
@@ -73,8 +73,13 @@ const LoginScreen = () => {
         >
           Login
         </Button>
+        {error ? (
+          <Error text="Please check your username and password" />
+        ) : (
+          <></>
+        )}
       </View>
-      {error ? <Error text="Please check your username and password" /> : <></>}
+      <View style={styles.footer}></View>
     </View>
   );
 };
@@ -85,6 +90,7 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    justifyContent: "space-between",
     height: "100%",
   },
   image: {
@@ -95,9 +101,10 @@ const styles = StyleSheet.create({
   title: {
     color: "black",
     textTransform: "uppercase",
+    textAlign: "center",
   },
   inputContainer: {
-    marginTop: 40,
+    marginTop: -350,
     width: 400,
     paddingHorizontal: 16,
     gap: 20,
@@ -118,6 +125,11 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 20,
     right: 20,
+  },
+  footer: {
+    width: "100%",
+    height: 30,
+    backgroundColor: "#70116d",
   },
 });
 
