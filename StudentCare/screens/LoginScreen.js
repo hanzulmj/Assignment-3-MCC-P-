@@ -1,7 +1,7 @@
 import { View, Image, StyleSheet, ScrollView } from "react-native";
 import React, { useState } from "react";
 
-import banner from "../assets/uov_banner.png";
+import banner from "..assets/uov_banner.png";
 import { Text, TextInput, Button } from "react-native-paper";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import Error from "../components/Error";
