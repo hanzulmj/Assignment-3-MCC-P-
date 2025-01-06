@@ -119,7 +119,6 @@ const LoginScreen = () => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#fff",
     alignItems: "center",
   },
   image: {
