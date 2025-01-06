@@ -41,7 +41,7 @@ const SubjectsScreen = ({ route }) => {
             Computer Science
           </Text>
           <Text variant="bodyMedium" style={styles.subDetails}>
-            {subjectList.length} Subjects | Average: {average}
+            {subjectList.length} Subjects | Average: {Math.floor(average)}
           </Text>
 
           <Divider style={styles.divider} bold={true} />

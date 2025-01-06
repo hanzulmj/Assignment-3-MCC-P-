@@ -13,7 +13,7 @@ const ProfileScreen = ({ route }) => {
         </View>
         <View style={styles.profileCard}>
           <Image
-            source={require("../assets/profilepic/1.jpg")}
+            source={student.profile_pic}
             style={styles.profileImage}
             resizeMode="contain"
           />
