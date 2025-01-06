@@ -5,6 +5,7 @@ import { StyleSheet, Text, View } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import LoginScreen from "./screens/LoginScreen";
 import HomeScreen from "./screens/HomeScreen";
+import { PaperProvider } from "react-native-paper";
 
 const Stack = createNativeStackNavigator();
 
