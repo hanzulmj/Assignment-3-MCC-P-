@@ -32,7 +32,7 @@ const LoginScreen = () => {
           <TextInput
             label="Password"
             mode="outlined"
-            secureTextEntry={true}
+            secureTextEntry={showPassword ? false : true}
             theme={{
               colors: {
                 background: "#fff",
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
     marginTop: 40,
     width: 400,
     paddingHorizontal: 16,
-    gap: 10,
+    gap: 20,
   },
   input: {
     fontSize: 20,
