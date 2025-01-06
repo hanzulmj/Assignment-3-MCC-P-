@@ -3,7 +3,8 @@ import banner from "../assets/uov_banner.png";
 import React from "react";
 import { Divider, Text } from "react-native-paper";
 
-const ProfileScreen = () => {
+const ProfileScreen = ({ route }) => {
+  const { student } = route.params;
   return (
     <>
       <ScrollView>
@@ -17,10 +18,10 @@ const ProfileScreen = () => {
             resizeMode="contain"
           />
           <Text variant="headlineMedium" style={styles.name}>
-            Alice Jhonson
+            {student.name}
           </Text>
           <Text variant="bodyMedium" style={styles.subDetails}>
-            Age: 21 | Gender: Female
+            Age: {student.age} | Gender: {student.gender}
           </Text>
 
           <Divider style={styles.divider} bold={true} />
@@ -29,13 +30,13 @@ const ProfileScreen = () => {
           </Text>
           <View style={styles.contactDetailsContainer}>
             <Text variant="bodySmall" style={styles.contactDetails}>
-              Email: alice.jhonson@gmail.com
+              Email: {student.email}
             </Text>
             <Text variant="bodySmall" style={styles.contactDetails}>
-              Phone: 123456789
+              Phone: {student.phone}
             </Text>
             <Text variant="bodySmall" style={styles.contactDetails}>
-              Address: Sri Lanka
+              Address: {student.address}
             </Text>
           </View>
 
@@ -45,13 +46,13 @@ const ProfileScreen = () => {
           </Text>
           <View style={styles.bilogicalDetailsContainer}>
             <Text variant="bodySmall" style={styles.bilogicalDetails}>
-              Gender: Female
+              Gender: {student.gender}
             </Text>
             <Text variant="bodySmall" style={styles.bilogicalDetails}>
-              Age: 21
+              Age: {student.age}
             </Text>
             <Text variant="bodySmall" style={styles.bilogicalDetails}>
-              Blood Group: O+
+              Blood Group: {student.blood_group}
             </Text>
           </View>
         </View>

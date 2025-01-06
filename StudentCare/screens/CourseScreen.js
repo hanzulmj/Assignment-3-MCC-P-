@@ -2,8 +2,12 @@ import { Image, ScrollView, StyleSheet, View } from "react-native";
 import banner from "../assets/uov_banner.png";
 import React from "react";
 import { Divider, Text } from "react-native-paper";
+import { courses } from "../assets/data/StudentsDb";
 
-const CourseScreen = () => {
+const CourseScreen = ({ route }) => {
+  const { student } = route.params;
+  const course = courses.find((course) => course.id === student.course_id);
+
   return (
     <>
       <ScrollView>
@@ -12,10 +16,10 @@ const CourseScreen = () => {
         </View>
         <View style={styles.courseCard}>
           <Text variant="headlineMedium" style={styles.name}>
-            Computer Science
+            {course.name}
           </Text>
           <Text variant="bodyMedium" style={styles.subDetails}>
-            Code: CS101 | Dept: Engineering
+            Code: {course.course_code} | Dept: {course.department}
           </Text>
 
           <Divider style={styles.divider} bold={true} />
@@ -24,17 +28,16 @@ const CourseScreen = () => {
           </Text>
           <View style={styles.courseDetailsContainer}>
             <Text variant="bodySmall" style={styles.courseDetails}>
-              Code: alice.jhonson@gmail.com
+              Code: {course.course_code}
             </Text>
             <Text variant="bodySmall" style={styles.courseDetails}>
-              Department: 123456789
+              Department: {course.department}
             </Text>
             <Text variant="bodySmall" style={styles.courseDetails}>
-              Duration: Sri Lanka
+              Duration: {course.duration}
             </Text>
             <Text variant="bodySmall" style={styles.courseDetails}>
-              Description: dhjdsakjd aksdhas kjdhsajdh fhsdjfkshf
-              shdfjskkjlkfclkd
+              {course.description}
             </Text>
           </View>
 

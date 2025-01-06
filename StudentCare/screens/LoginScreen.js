@@ -6,12 +6,36 @@ import { Text, TextInput, Button } from "react-native-paper";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import Error from "../components/Error";
 import { useNavigation } from "@react-navigation/native";
+import { students } from "../assets/data/StudentsDb";
 
 const LoginScreen = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState(false);
 
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+
   const navigation = useNavigation();
+
+  const handleLogin = () => {
+    if (userName === "" || password === "") {
+      setError(true);
+      return;
+    }
+    const student = students.find(
+      (student) =>
+        student.username === userName && student.password === password
+    );
+
+    if (student) {
+      navigation.navigate("Home", { student });
+      setError(false);
+      setUserName("");
+      setPassword("");
+    } else {
+      setError(true);
+    }
+  };
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -23,6 +47,7 @@ const LoginScreen = () => {
           <TextInput
             label="Username"
             mode="outlined"
+            value={userName}
             theme={{
               colors: {
                 background: "#fff",
@@ -33,11 +58,13 @@ const LoginScreen = () => {
             }}
             contentStyle={{ color: "#000000" }}
             style={styles.input}
+            onChangeText={(text) => setUserName(text)}
           />
           <View>
             <TextInput
               label="Password"
               mode="outlined"
+              value={password}
               secureTextEntry={showPassword ? false : true}
               theme={{
                 colors: {
@@ -49,6 +76,7 @@ const LoginScreen = () => {
               }}
               contentStyle={{ color: "#000000" }}
               style={styles.input}
+              onChangeText={(text) => setPassword(text)}
             />
             {showPassword ? (
               <Ionicons
@@ -74,7 +102,7 @@ const LoginScreen = () => {
             textColor="#fff"
             labelStyle={styles.buttonText}
             style={styles.button}
-            onPress={() => navigation.navigate("Home")}
+            onPress={handleLogin}
           >
             Login
           </Button>

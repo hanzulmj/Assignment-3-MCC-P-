@@ -7,7 +7,9 @@ import CourseScreen from "./CourseScreen";
 import SubjectsScreen from "./SubjectsScreen";
 
 const Tab = createBottomTabNavigator();
-const HomeScreen = () => {
+
+const HomeScreen = ({ route }) => {
+  const { student } = route.params;
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -39,9 +41,21 @@ const HomeScreen = () => {
         },
       })}
     >
-      <Tab.Screen name="Profile" component={ProfileScreen} />
-      <Tab.Screen name="Course" component={CourseScreen} />
-      <Tab.Screen name="Subjects" component={SubjectsScreen} />
+      <Tab.Screen
+        name="Profile"
+        initialParams={{ student: student }}
+        component={ProfileScreen}
+      />
+      <Tab.Screen
+        name="Course"
+        component={CourseScreen}
+        initialParams={{ student: student }}
+      />
+      <Tab.Screen
+        name="Subjects"
+        component={SubjectsScreen}
+        initialParams={{ student: student }}
+      />
     </Tab.Navigator>
   );
 };
